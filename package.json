@@ -4,25 +4,39 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "npx playwright test",
-    "test-headed": "npx playwright test --headed"
-  },
+    "test": "cross-env ENV=qa playwright test",
+    "test:dev": "cross-env ENV=dev playwright test",
+    "test:qa": "cross-env ENV=qa playwright test",
+    "test:headed": "cross-env ENV=qa playwright test --headed",
+    "test:ui": "cross-env ENV=qa playwright test --ui",
+    "test:smoke": "cross-env ENV=qa playwright test --grep @smoke",
+    "test:regression": "cross-env ENV=qa playwright test --grep @regression",
+    "test:api": "cross-env ENV=qa playwright test --project=api",
+    "test:chromium": "cross-env ENV=qa playwright test --project=chromium",
+    "report": "playwright show-report",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write \"src/**/*.ts\" \"tests/**/*.ts\" \"*.ts\" \"*.mts\"",
+    "format:check": "prettier --check \"src/**/*.ts\" \"tests/**/*.ts\" \"*.ts\" \"*.mts\""
+},
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "commonjs",
   "devDependencies": {
     "@eslint/js": "^10.0.1",
-    "@eslint/json": "^2.1.1",
+    "@faker-js/faker": "^10.6.0",
     "@playwright/test": "^1.64.0",
     "@types/node": "^26.6.4",
-    "eslint": "^10.12.0",
-    "globals": "^17.13.0",
-    "typescript-eslint": "^8.71.1"
-  },
-  "dependencies": {
-    "@faker-js/faker": "^10.6.0",
+    "cross-env": "^10.1.0",
     "dotenv": "^18.0.7",
-    "prettier": "^3.9.9"
+    "eslint": "^10.12.0",
+    "eslint-plugin-playwright": "^2.12.1",
+    "globals": "^17.13.0",
+    "jiti": "^2.7.0",
+    "prettier": "^3.9.10",
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.71.1"
   }
 }
