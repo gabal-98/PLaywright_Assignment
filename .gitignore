@@ -1,10 +1,20 @@
-
-# Playwright
+# Dependencies
 node_modules/
+
+# Playwright output
 /test-results/
 /playwright-report/
 /blob-report/
+/results/
 /playwright/.cache/
 /playwright/.auth/
 
+# Environment files (keep only the example)
 .env*
+!.env.example
+
+# Editors / OS
+.idea/
+.vscode/
+.DS_Store
+*.log
